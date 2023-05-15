@@ -30,15 +30,48 @@ console.log(images);
 
 const elItem = document.getElementById("container");
 
-for (let i = 0 ; i < images.length; i++) {
-    let photo = images[i];
-
-    const elphoto = `<div class="card">
-    <img src="img/${photo.image}" class="foto">
+images.forEach((element) => {
+    const elphoto = `<div class="photo">
+    <img src="${element.image}" class="foto">
     
     </div>`
     
-
     elItem.innerHTML += elphoto;
-   
-}
+});
+
+const object = document.querySelectorAll("img");
+const buttonNext = document.getElementById("next")
+const buttonPrev = document.getElementById("prev")
+
+//aggiungo la classe active alle immagini 
+let imgPosition = 0
+object[imgPosition].classList.add("active");
+
+//aggiungo la funzione click al bottone
+
+buttonNext.addEventListener("click",
+    function() {
+        object[imgPosition].classList.remove("active");
+
+        if (imgPosition == images.length -1 ){
+            imgPosition = 0;
+        }else{
+            imgPosition++;
+        }
+            
+        
+        object[imgPosition].classList.add("active");
+    }
+);
+buttonPrev.addEventListener("click",
+    function() {
+        object[imgPosition].classList.remove("active");
+
+        if (imgPosition == 0){
+            imgPosition = images.length -1;
+        } else{
+            imgPosition--;
+        }
+        object[imgPosition].classList.add("active");
+    }
+);
