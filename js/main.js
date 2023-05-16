@@ -26,52 +26,73 @@ const images = [
         text: "Marvel\\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
     }
 ];
-console.log(images);
+
 
 const elItem = document.getElementById("container");
 
-images.forEach((element) => {
-    const elphoto = `<div class="photo">
-    <img src="${element.image}" class="foto">
+    images.forEach((element) => {
+     const elphoto = 
+        `<div class="card">
+        <img src="${element.image}" class="foto">
+        <div class="text">
+        <h3>${element.title}</h3>
+        <p>${element.text}</p>
+        </div>
+        </div>`
+       
     
-    </div>`
-    
-    elItem.innerHTML += elphoto;
+   elItem.innerHTML += elphoto;
 });
 
-const object = document.querySelectorAll("img");
-const buttonNext = document.getElementById("next")
-const buttonPrev = document.getElementById("prev")
+
+
+
+  
+
+// mi prendo il riferimento degli elementi
+
+const object = document.querySelectorAll(".card");
+const buttonNext = document.getElementById("next");
+const buttonPrev = document.getElementById("prev");
+const text = document.getElementById("text");
 
 //aggiungo la classe active alle immagini 
 let imgPosition = 0
 object[imgPosition].classList.add("active");
 
+
+
+
 //aggiungo la funzione click al bottone
 
-buttonNext.addEventListener("click",
-    function() {
-        object[imgPosition].classList.remove("active");
+buttonNext.addEventListener("click",imgNextButton);
+buttonPrev.addEventListener("click", imgPrevButton);
+    
 
-        if (imgPosition == images.length -1 ){
-            imgPosition = 0;
-        }else{
-            imgPosition++;
-        }
-            
+
+
+//FUNZIONE
+function imgNextButton() {
+    object[imgPosition].classList.remove("active");
+   
+    if (imgPosition == images.length -1 ){
+        imgPosition = 0;
+    }else{
+        imgPosition++;
+    }
         
-        object[imgPosition].classList.add("active");
-    }
-);
-buttonPrev.addEventListener("click",
-    function() {
-        object[imgPosition].classList.remove("active");
+    
+    object[imgPosition].classList.add("active");
+   
+}
 
-        if (imgPosition == 0){
-            imgPosition = images.length -1;
-        } else{
-            imgPosition--;
-        }
-        object[imgPosition].classList.add("active");
+function imgPrevButton() {
+    object[imgPosition].classList.remove("active");
+
+    if (imgPosition == 0){
+        imgPosition = images.length -1;
+    } else{
+        imgPosition--;
     }
-);
+    object[imgPosition].classList.add("active");
+}
