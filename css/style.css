@@ -7,7 +7,8 @@
 #container{ 
     width:40%;
     position: relative;
-    margin:0 auto;
+    margin:20px auto;
+
 }
 img{ 
     width: 100%;
@@ -40,4 +41,14 @@ img{
     left: 0;
     bottom:20px;
     color: white;
+}
+#side-container{
+    width:15%;
+    position: absolute;
+    right:150px;
+    margin-top: 20px;
+    top: 0;
+}
+#side-container img{ 
+    height:calc(580px / 5);
 }

@@ -30,7 +30,9 @@ const images = [
 
 const elItem = document.getElementById("container");
 
-    images.forEach((element) => {
+const elSideContainer = document.getElementById("side-container");
+
+images.forEach((element) => {
      const elphoto = 
         `<div class="card">
         <img src="${element.image}" class="foto">
@@ -42,9 +44,19 @@ const elItem = document.getElementById("container");
        
     
    elItem.innerHTML += elphoto;
+
+
+   const elphotoSide = 
+   `<div>
+   <img src="${element.image}" class="foto">
+   </div>`
+   elSideContainer.innerHTML += elphotoSide;
 });
 
 
+
+
+   
 
 
   
